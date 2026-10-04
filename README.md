@@ -37,14 +37,18 @@ class Student {
 
 }
 
-Different objects can have different names.
 4. Static vs Non-Static
-Static	Non-Static
-Belongs to class	Belongs to object
-Shared among objects	Separate for each object
-One copy	One copy per object
-Can be accessed using class name	Usually accessed through object
-Useful for common data	Useful for object-specific data
+   Static                   	Non-Static
+Belongs to class	     Belongs to object
+Shared among objects	 Separate for each object
+One copy	              One copy per object
+
+Can be accessed
+using class name         Usually accessed through object
+
+Useful for common
+ data	                Useful for object-specific data
+
 
 
 5. Object Counting
