@@ -381,3 +381,10 @@ ADD
 WRITE
 
 একসাথে safe ভাবে হয়।
+
+What is synchronized?
+synchronized is a Java keyword used to control access to shared resources by allowing only one thread at a time to execute a critical section.
+
+Why do we use synchronized?
+We use synchronized to prevent race conditions when multiple threads modify shared data.
+
