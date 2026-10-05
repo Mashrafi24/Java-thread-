@@ -72,3 +72,102 @@ The value can become:
 0 → 1 → 2 → 3
 
 static means there is one shared copy.
+
+
+
+#start() & run()
+
+
+##star()
+
+task1.start();
+task2.start();
+task3.start();
+
+
+task1.start();
+তখন Java:
+1. নতুন একটা thread তৈরি করে
+2. সেই thread-কে CPU execution-এর জন্য প্রস্তুত করে
+3. তারপর automatically run() method call করে
+task1.start()
+       |
+       ↓
+New Thread created
+       |
+       ↓
+run()
+       |
+       ↓
+Task execution
+
+        Main Thread
+
+            |
+    -----------------
+    |       |       |
+    ↓       ↓       ↓
+
+ task1    task2    task3
+
+ Thread   Thread   Thread
+
+
+
+কোন thread আগে CPU পাবে সেটা Thread Scheduler ঠিক করে।
+
+
+Burger is cooking
+Pizza is cooking
+Pasta is cooking
+
+Pasta is cooking
+Burger is cooking
+Pizza is cooking
+
+##run()
+task1.run();
+task2.run();
+task3.run();
+
+❌ নতুন thread তৈরি হবে না।
+এটা normal method call-এর মতো চলবে।
+
+Main Thread
+
+   |
+   ↓
+
+task1.run()
+   |
+   ↓
+finish
+
+task2.run()
+   |
+   ↓
+finish
+
+task3.run()
+
+
+
+      start()                 run() 
+
+ নতুন Thread তৈরি করে    | নতুন Thread তৈরি করে না 
+ Multithreading হয়     | Normal method call 
+ JVM run() call করে    | তুমি manually call করো 
+ Concurrent execution  | Sequential execution
+
+hat does start() do in Java Thread?
+Answer:
+The start() method creates a new thread of execution and internally invokes the run() method.
+
+
+Why don't we call run() directly?
+Answer:
+Calling run() directly does not create a new thread; it executes like a normal method in the current thread.
+
+
+
+
