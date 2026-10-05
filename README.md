@@ -169,5 +169,215 @@ Answer:
 Calling run() directly does not create a new thread; it executes like a normal method in the current thread.
 
 
+# Java Multithreading
+
+## Thread Concept
+
+## Creating Thread
+
+## start() vs run()
+
+## Static vs Non-static in Thread
+
+## Race Condition
+
+## Synchronization
+
+## AtomicInteger
+
+## Practice Programs
 
 
+
+
+
+extends Thread
+        ↓
+create 3 objects
+        ↓
+start()
+        ↓
+multiple threads run
+        ↓
+static = shared data
+        ↓
+non-static = separate data
+        ↓
+shared data creates race condition
+        ↓
+solve using synchronized / AtomicInteger
+
+
+
+Now see the concept of race condition, how to solve using synchornised and AtomicInteger
+1. What is a race condition?
+A race condition occurs when multiple threads access and modify the same shared data at the same time, and the final result depends on the timing/order of the threads.
+
+In your example:
+
+static int staticCount = 0;
+There is only one staticCount shared by all three threads.
+
+Each thread executes:
+
+staticCount++;
+The problem is that:
+
+staticCount++;
+looks like one operation, but internally it is approximately:
+
+1. READ  staticCount
+2. ADD   1
+3. WRITE staticCount
+It is therefore not atomic.
+
+2. How can the problem happen?
+Suppose:
+
+staticCount = 10
+Two threads execute staticCount++ at nearly the same time.
+
+Thread 1
+READ → 10
+Thread 2
+READ → 10
+Both threads have now read 10.
+
+Then:
+
+Thread 1: 10 + 1 = 11
+Thread 2: 10 + 1 = 11
+And both write:
+
+Thread 1 → WRITE 11
+Thread 2 → WRITE 11
+You expected:
+
+10 → 11 → 12
+But you got:
+
+10 → 11
+One increment was effectively lost.
+
+This is called a lost update.
+
+
+ #Race Condition
+এটা সবচেয়ে important।
+তোমার:
+staticCount++;
+
+দেখতে এক লাইন।
+কিন্তু ভিতরে:
+READ
+
++
+
+ADD 1
+
++
+
+WRITE
+
+হয়।
+ধরো:
+staticCount = 10
+
+দুইটা thread:
+Thread 1:
+READ 10
+
+Thread 2:
+READ 10
+
+এখন দুইজনের কাছে:
+10
+
+আছে।
+Thread 1:
+10+1=11
+WRITE 11
+
+Thread 2:
+10+1=11
+WRITE 11
+
+শেষে:
+11
+
+হল।
+কিন্তু হওয়া উচিত ছিল:
+12
+
+একটা increment হারিয়ে গেল।
+এটাই:
+Lost update
+
+6. Experiment কেন 1 million?
+এখানে:
+for(int i=0;i<1000000;i++)
+{
+    staticCount++;
+}
+
+ধরা:
+৩টা thread।
+Expected:
+3 × 1,000,000
+
+=
+
+3,000,000
+
+কিন্তু race condition হলে:
+Actual:
+
+1,847,291
+
+বা
+
+2,478,392
+
+হতে পারে।
+কারণ increment হারিয়ে যাচ্ছে।
+7. তাহলে সমাধান কী?
+দুইটা প্রধান solution:
+Solution 1: synchronized
+Example:
+synchronized void increment(){
+
+    staticCount++;
+
+}
+
+এর মানে:
+এক সময়ে একটাই thread ঢুকবে।
+Diagram:
+Thread 1
+   |
+ LOCK
+   |
+count++
+   |
+UNLOCK
+
+
+Thread 2 waits
+
+Solution 2: AtomicInteger
+Java দেয়:
+AtomicInteger count =
+new AtomicInteger(0);
+
+তারপর:
+count.incrementAndGet();
+
+এটা atomic operation।
+মানে:
+READ
++
+ADD
++
+WRITE
+
+একসাথে safe ভাবে হয়।
