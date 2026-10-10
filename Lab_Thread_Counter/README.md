@@ -94,6 +94,10 @@ Screenshots of the program outputs are stored in the outputs/
 directory.
 The unsynchronized results may be different between runs because
 thread scheduling is not deterministic.
+
+<img width="419" height="251" alt="WhatsApp Image 2026-10-11 at 3 13 33 AM" src="https://github.com/user-attachments/assets/b92d08e6-a34d-4b85-8683-a0d6fe9b69cf" />
+
+
 TC1
 1 thread, 1,000 increments/thread
 Safe:
@@ -103,6 +107,8 @@ Unsafe:
 [Insert TC1 Unsafe Screenshot Here]
 
 TC2
+<img width="381" height="880" alt="image" src="https://github.com/user-attachments/assets/76cea33e-7233-42ed-bb74-ea10f5f750ff" />
+
 2 threads, 10,000 increments/thread
 Safe:
 [Insert TC2 Safe Screenshot Here]
@@ -111,6 +117,9 @@ Unsafe:
 [Insert TC2 Unsafe Screenshot Here]
 
 TC3
+
+<img width="381" height="880" alt="image" src="https://github.com/user-attachments/assets/bf181eee-ef7d-496b-a6ad-d3b7dba619e9" />
+
 5 threads, 10,000 increments/thread
 Safe:
 [Insert TC3 Safe Screenshot Here]
@@ -119,6 +128,9 @@ Unsafe:
 [Insert TC3 Unsafe Screenshot Here]
 
 TC4
+
+<img width="416" height="730" alt="WhatsApp Image 2026-10-11 at 3 14 39 AM" src="https://github.com/user-attachments/assets/4da529d8-dd8a-4d8c-850e-d2c28dc4069b" />
+
 10 threads, 50,000 increments/thread
 Safe:
 [Insert TC4 Safe Screenshot Here]
@@ -127,6 +139,9 @@ Unsafe:
 [Insert TC4 Unsafe Screenshot Here]
 
 TC5
+
+<img width="443" height="713" alt="WhatsApp Image 2026-10-11 at 3 15 03 AM" src="https://github.com/user-attachments/assets/a6e9a0b9-e2fe-4f95-a105-a937b20f598d" />
+
 20 threads, 50,000 increments/thread
 Safe:
 [Insert TC5 Safe Screenshot Here]
@@ -135,6 +150,8 @@ Unsafe:
 [Insert TC5 Unsafe Screenshot Here]
 
 TC6
+<img width="443" height="713" alt="WhatsApp Image 2026-10-11 at 3 15 03 AM" src="https://github.com/user-attachments/assets/6e6e7699-5531-44b8-bd26-c67cec9aac78" />
+
 50 threads, 50,000 increments/thread
 Safe:
 [Insert TC6 Safe Screenshot Here]
@@ -143,6 +160,8 @@ Unsafe:
 [Insert TC6 Unsafe Screenshot Here]
 
 TC7
+<img width="410" height="451" alt="WhatsApp Image 2026-10-11 at 3 15 20 AM" src="https://github.com/user-attachments/assets/272a6e9c-c180-4d4c-b471-47bfb23964ee" />
+
 100 threads, 50,000 increments/thread
 Safe:
 [Insert TC7 Safe Screenshot Here]
@@ -185,90 +204,90 @@ The operation is performed on a normal static long.
 
 Each test case is run five times.
 
-Threads	Run	Expected	Static (Unsafe)	Non-static	Abs Diff	Diff %
+    Threads	Run	Expected	Static (Unsafe)	Non-static	Abs Diff	Diff %
+    
+    1	1	1,000				
+    1	2	1,000				
+    1	3	1,000				
+    1	4	1,000				
+    1	5	1,000				
+    2	1	20,000				
+    2	2	20,000				
+    2	3	20,000				
+    2	4	20,000				
+    2	5	20,000				
+    5	1	50,000				
+    5	2	50,000				
+    5	3	50,000				
+    5	4	50,000				
+    5	5	50,000				
+    10	1	500,000				
+    10	2	500,000				
+    10	3	500,000				
+    10	4	500,000				
+    10	5	500,000				
+    20	1	1,000,000				
+    20	2	1,000,000				
+    20	3	1,000,000				
+    20	4	1,000,000				
+    20	5	1,000,000				
+    50	1	2,500,000				
+    50	2	2,500,000				
+    50	3	2,500,000				
+    50	4	2,500,000				
+    50	5	2,500,000				
+    100	1	5,000,000				
+    100	2	5,000,000				
+    100	3	5,000,000				
+    100	4	5,000,000				
+    100	5	5,000,000				
 
-1	1	1,000				
-1	2	1,000				
-1	3	1,000				
-1	4	1,000				
-1	5	1,000				
-2	1	20,000				
-2	2	20,000				
-2	3	20,000				
-2	4	20,000				
-2	5	20,000				
-5	1	50,000				
-5	2	50,000				
-5	3	50,000				
-5	4	50,000				
-5	5	50,000				
-10	1	500,000				
-10	2	500,000				
-10	3	500,000				
-10	4	500,000				
-10	5	500,000				
-20	1	1,000,000				
-20	2	1,000,000				
-20	3	1,000,000				
-20	4	1,000,000				
-20	5	1,000,000				
-50	1	2,500,000				
-50	2	2,500,000				
-50	3	2,500,000				
-50	4	2,500,000				
-50	5	2,500,000				
-100	1	5,000,000				
-100	2	5,000,000				
-100	3	5,000,000				
-100	4	5,000,000				
-100	5	5,000,000				
+    
+    7.3 Average of Five Unsynchronized Runs
+    After running all five unsynchronized trials, calculate the average.
+    Threads	Average Static	Average Abs Diff	Average Diff %	Minimum %	Maximum %
+    1					
+    2					
+    5					
+    10					
+    20					
+    50					
+    100					
 
 
-7.3 Average of Five Unsynchronized Runs
-After running all five unsynchronized trials, calculate the average.
-Threads	Average Static	Average Abs Diff	Average Diff %	Minimum %	Maximum %
-1					
-2					
-5					
-10					
-20					
-50					
-100					
-
-
-# 8. Calculation
-Absolute Difference
-The absolute difference is calculated as:
-Absolute Difference
-=
-|Static Count - Non-static Total|
-
-Example:
-Static Count       = 505,713
-Non-static Total   = 1,000,000
-
-Absolute Difference
-=
-|505,713 - 1,000,000|
-
-=
-494,287
-
-Percentage Difference
-Difference (%)
-=
-(Absolute Difference / Non-static Total) × 100
-
-For example:
-Absolute Difference = 494,287
-Non-static Total    = 1,000,000
-
-Difference (%)
-=
-494,287 / 1,000,000 × 100
-
-=
-49.4287%
+    # 8. Calculation
+    Absolute Difference
+    The absolute difference is calculated as:
+    Absolute Difference
+    =
+    |Static Count - Non-static Total|
+    
+    Example:
+    Static Count       = 505,713
+    Non-static Total   = 1,000,000
+    
+    Absolute Difference
+    =
+    |505,713 - 1,000,000|
+    
+    =
+    494,287
+    
+    Percentage Difference
+    Difference (%)
+    =
+    (Absolute Difference / Non-static Total) × 100
+    
+    For example:
+    Absolute Difference = 494,287
+    Non-static Total    = 1,000,000
+    
+    Difference (%)
+    =
+    494,287 / 1,000,000 × 100
+    
+    =
+    49.4287%
 
 # 9. Observation
 Thread-Safe Experiment
