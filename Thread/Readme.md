@@ -80,7 +80,7 @@ Experiment	Concept	Purpose
 15	wait() / notify()	Demonstrates thread coordination
 
 
-Experiment 1: start() vs run()
+# Experiment 1: start() vs run()
 start()
 start() creates a new thread of execution and causes the JVM to
 invoke the run() method.
@@ -107,7 +107,7 @@ start()
 run()
 → Normal method call
 
-Experiment 2: sleep()
+# Experiment 2: sleep()
 sleep() temporarily pauses the currently executing thread.
 Thread.sleep(1000);
 
@@ -131,7 +131,7 @@ TIMED_WAITING
    ↓
 RUNNING
 
-Experiment 3: join()
+# Experiment 3: join()
 join() makes one thread wait until another thread finishes.
 task1.start();
 
@@ -150,7 +150,9 @@ main continues
 
 This is useful when the main thread needs to wait for worker threads
 before continuing.
-Experiment 4: getState()
+
+
+# Experiment 4: getState()
 getState() returns the current state of a thread.
 System.out.println(task.getState());
 
@@ -167,7 +169,7 @@ Before start → NEW
 Running      → RUNNABLE
 After finish → TERMINATED
 
-Experiment 5: getName() / setName()
+# Experiment 5: getName() / setName()
 Threads can be given meaningful names.
 task.setName("Cooking Thread");
 
@@ -177,7 +179,9 @@ Output:
 Cooking Thread
 
 The name is useful when debugging multithreaded programs.
-Experiment 6: isAlive()
+
+
+# Experiment 6: isAlive()
 isAlive() checks whether a thread has started and has not yet finished.
 System.out.println(task.isAlive());
 
@@ -194,7 +198,7 @@ Possible output:
 true
 false
 
-Experiment 7: interrupt()
+# Experiment 7: interrupt()
 interrupt() sends an interruption request to a thread.
 Example:
 task.interrupt();
@@ -232,7 +236,9 @@ Thread.MAX_PRIORITY
 
 Important
 Priority does not guarantee which thread will execute first.
-Experiment 9: Race Condition
+
+
+# Experiment 9: Race Condition
 A race condition can occur when multiple threads access and modify
 shared data without proper synchronization.
 Example:
@@ -265,7 +271,8 @@ Actual:
 11
 
 This is a lost update caused by a race condition.
-Experiment 10: synchronized
+
+# Experiment 10: synchronized
 synchronized is used to protect shared data from concurrent access.
 Example:
 static int count = 0;
@@ -286,7 +293,9 @@ Thread 2 → LOCK → increment → UNLOCK
 
 This prevents the increment operation from being performed by
 multiple threads simultaneously.
-Experiment 11: AtomicInteger
+
+
+# Experiment 11: AtomicInteger
 AtomicInteger provides atomic operations on an integer.
 Import:
 import java.util.concurrent.atomic.AtomicInteger;
@@ -304,7 +313,7 @@ static AtomicInteger count =
 
 count.incrementAndGet();
 
-Experiment 12: volatile
+# Experiment 12: volatile
 volatile is mainly used to provide visibility of a variable's
 latest value between threads.
 Example:
@@ -323,7 +332,9 @@ Therefore:
 volatile int count;
 
 does not by itself solve a race condition caused by count++.
-Experiment 13: Daemon Thread
+
+
+# Experiment 13: Daemon Thread
 A daemon thread is a background/supporting thread.
 Example:
 Thread task = new Thread(() -> {
@@ -351,7 +362,7 @@ Daemon Thread
      ↓
 Does not keep JVM alive
 
-Experiment 14: synchronized Block
+# Experiment 14: synchronized Block
 A synchronized block allows only a specific section of code to be
 protected.
 Example:
@@ -363,7 +374,9 @@ synchronized(Counter.class) {
 Instead of locking the entire method, only the critical section
 is protected.
 This can provide more fine-grained control over synchronization.
-Experiment 15: wait() / notify()
+
+
+# Experiment 15: wait() / notify()
 wait() and notify() are used for communication and coordination
 between threads.
 Example:
@@ -462,16 +475,16 @@ task1.start();
 task2.start();
 task3.start();
 
-Thread Laboratory Experiment
+# Thread Laboratory Experiment
 For the race-condition experiment, three threads can increment a
 shared counter for different durations.
-Case 1
+## Case 1
 1 minute
 
-Case 2
+## Case 2
 5 minutes
 
-Case 3
+## Case 3
 15 minutes
 
 The expected and actual values can then be compared.
