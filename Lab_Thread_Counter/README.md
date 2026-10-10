@@ -356,49 +356,49 @@ safe.incrementAndGet();
 
 AtomicLong provides an atomic increment operation, so concurrent
 threads can safely update the shared counter without losing increments.
-14. Analysis Questions
-1. What is the difference between static and non-static variables?
-A static variable belongs to the class and has one shared copy.
-A non-static variable belongs to an object, so every object has its own
-copy.
-2. Why can the static counter produce an incorrect value?
-Because the static counter is shared by multiple threads and the normal
-long increment operation is not atomic.
-3. Why is the non-static counter correct?
-Each thread has its own Counter object and therefore its own
-non-static count variable.
-4. Why is join() necessary?
-join() ensures that the main thread waits for all worker threads to
-finish before calculating the final result.
-5. What causes lost updates?
-Lost updates occur when multiple threads perform a read-modify-write
-operation on the same shared variable at the same time.
-6. Does increasing the number of threads always increase the
-percentage difference?
-No.
-The number of lost updates can increase, but the percentage difference
-does not necessarily increase monotonically.
-The result depends on thread scheduling, CPU resources, timing and
-runtime conditions.
-7. Why can the result change between runs?
-Thread scheduling is not deterministic.
-Different executions can produce different thread interleavings, causing
-different numbers of lost updates.
-8. Why does AtomicLong prevent lost updates?
-AtomicLong.incrementAndGet() performs the increment atomically, so
-competing threads do not overwrite each other's increments.
-15. Conclusion
-This experiment demonstrates that static vs non-static describes
-variable ownership, not thread safety.
-A static variable has one shared copy for the entire class, while a
-non-static variable has a separate copy for each object.
-The unsynchronized static counter uses:
-unsafe++;
-
-which is not atomic and can therefore produce lost updates when multiple
-threads access it concurrently.
-The thread-safe implementation uses:
-safe.incrementAndGet();
+## 14. Analysis Questions
+     1. What is the difference between static and non-static variables?
+       A static variable belongs to the class and has one shared copy.
+     A non-static variable belongs to an object, so every object has its own
+     copy.
+    2. Why can the static counter produce an incorrect value?
+    Because the static counter is shared by multiple threads and the normal
+    long increment operation is not atomic.
+    3. Why is the non-static counter correct?
+    Each thread has its own Counter object and therefore its own
+    non-static count variable.
+    4. Why is join() necessary?
+    join() ensures that the main thread waits for all worker threads to
+    finish before calculating the final result.
+    5. What causes lost updates?
+    Lost updates occur when multiple threads perform a read-modify-write
+    operation on the same shared variable at the same time.
+    6. Does increasing the number of threads always increase the
+    percentage difference?
+    No.
+    The number of lost updates can increase, but the percentage difference
+    does not necessarily increase monotonically.
+    The result depends on thread scheduling, CPU resources, timing and
+    runtime conditions.
+    7. Why can the result change between runs?
+    Thread scheduling is not deterministic.
+    Different executions can produce different thread interleavings, causing
+    different numbers of lost updates.
+    8. Why does AtomicLong prevent lost updates?
+    AtomicLong.incrementAndGet() performs the increment atomically, so
+    competing threads do not overwrite each other's increments.
+    15. Conclusion
+    This experiment demonstrates that static vs non-static describes
+    variable ownership, not thread safety.
+    A static variable has one shared copy for the entire class, while a
+    non-static variable has a separate copy for each object.
+    The unsynchronized static counter uses:
+    unsafe++;
+    
+    which is not atomic and can therefore produce lost updates when multiple
+    threads access it concurrently.
+    The thread-safe implementation uses:
+    safe.incrementAndGet();
 
 which provides atomic updates.
 The experiment therefore demonstrates the importance of using proper
