@@ -26,21 +26,22 @@
     ├── ...
     └── T100_false_run5.txt
 
-  3. How to Run
-Compile the Java Program
-Open PowerShell in the project directory and run:
-javac Mashrafi_Thread.java
+  # 3. How to Run
+   Compile the Java Program
+   Open PowerShell in the project directory and run:
+   javac Mashrafi_Thread.java
 
-If there is no compilation error, the program has compiled successfully.
-Run Thread-Safe Mode
-The true argument selects the AtomicLong implementation:
-java Mashrafi_Thread 10 50000 true
+   If there is no compilation error, the program has compiled successfully.
 
-Run Unsynchronized Mode
-The false argument selects the normal long implementation:
-java Mashrafi_Thread 10 50000 false
+  ## Run Thread-Safe Mode
+   The true argument selects the AtomicLong implementation:
+    java Mashrafi_Thread 10 50000 true
 
-Command Format
+  ## Run Unsynchronized Mode
+  The false argument selects the normal long implementation:
+  java Mashrafi_Thread 10 50000 false
+
+## Command Format
 java Mashrafi_Thread <threads> <increments-per-thread> <true|false>
 
 Where:
@@ -49,7 +50,7 @@ increments-per-thread  = Number of increments performed by each thread
 true                   = Thread-safe AtomicLong
 false                  = Unsynchronized normal long
 
-4. Test Inputs
+# 4.Test Inputs
 The experiment contains seven test cases.
 Test	Threads	Increments/thread	Expected Count
 TC1	1	1,000	1,000
@@ -69,7 +70,7 @@ Number of Threads × Increments per Thread
 For example:
 10 × 50,000 = 500,000
 
-5. Running All Test Cases
+# 5. Running All Test Cases
 The run_all.ps1 script automatically runs:
 Safe Mode       → 1 run for each test case
 Unsafe Mode     → 5 runs for each test case
@@ -88,7 +89,7 @@ will be performed.
 The results will be saved in:
 outputs/results.csv
 
-6. Output Screenshots
+# 6. Output Screenshots
 Screenshots of the program outputs are stored in the outputs/
 directory.
 The unsynchronized results may be different between runs because
@@ -149,7 +150,7 @@ Safe:
 Unsafe:
 [Insert TC7 Unsafe Screenshot Here]
 
-7. Result Analysis
+# 7. Result Analysis
 7.1 Thread-Safe Experiment — AtomicLong
 The thread-safe mode uses:
 safe.incrementAndGet();
@@ -178,8 +179,14 @@ The unsynchronized mode uses:
 unsafe++;
 
 The operation is performed on a normal static long.
+
+
+
+
 Each test case is run five times.
+
 Threads	Run	Expected	Static (Unsafe)	Non-static	Abs Diff	Diff %
+
 1	1	1,000				
 1	2	1,000				
 1	3	1,000				
@@ -229,7 +236,7 @@ Threads	Average Static	Average Abs Diff	Average Diff %	Minimum %	Maximum %
 100					
 
 
-8. Calculation
+# 8. Calculation
 Absolute Difference
 The absolute difference is calculated as:
 Absolute Difference
@@ -263,7 +270,7 @@ Difference (%)
 =
 49.4287%
 
-9. Observation
+# 9. Observation
 Thread-Safe Experiment
 The AtomicLong counter provides safe atomic updates when multiple
 threads increment the same shared counter.
