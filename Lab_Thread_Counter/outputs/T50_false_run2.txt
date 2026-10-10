@@ -1,0 +1,8 @@
+Mode            : Unsynchronized (long)
+Threads         : 50
+Increments/thr  : 50000
+Expected count  : 2500000
+Static count    : 2470757
+Non-static total: 2500000
+Absolute diff   : 29243
+Difference (%)  : 1.1697

@@ -1,0 +1,8 @@
+Mode            : Thread-safe (AtomicLong)
+Threads         : 10
+Increments/thr  : 50000
+Expected count  : 500000
+Static count    : 500000
+Non-static total: 500000
+Absolute diff   : 0
+Difference (%)  : 0.0000
